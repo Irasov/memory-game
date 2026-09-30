@@ -1,3 +1,22 @@
+:root {
+  /* Фон */
+  --bg-main: #e8e1d5;
+  --bg-panel: #f2ebdd;
+  --border: #8b7e6a;
+
+  /* Текст */
+  --text-primary: #3a342b;
+  --text-muted: #6b6154;
+
+  /* Рубашки */
+  --card: #8fc0b8;
+
+  /* UI-акценты */
+  --gold: #c9a961;
+  --glow: #e0c48a;
+  --success: #9cb88a;
+  --error: #b57b72;
+}
 /* Обнуление стилей */
 *,
 *::before,
@@ -47,7 +66,8 @@ html {
 
 body {
   line-height: 1;
-  background-color: white;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   font-family: sans-serif;
 }
 body._lock {
@@ -90,6 +110,7 @@ body._lock {
 }
 .title {
   font-size: 32px;
+  font-weight: 600;
 }
 .header__block {
   display: flex;
@@ -100,7 +121,12 @@ body._lock {
   padding: 5px 10px;
   background-color: transparent;
   cursor: pointer;
-  border: 1px black solid;
+  border: 1px var(--border) solid;
   border-radius: 10px;
   font-size: 18px;
+  background-color: var(--gold);
+  transition: background-color 0.3s ease 0s;
+}
+.btn:hover {
+  background-color: var(--glow);
 }
