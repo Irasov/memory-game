@@ -47,14 +47,11 @@ html {
 
 body {
   line-height: 1;
-  background-color: var(--text-inverse);
-  font-family: var(--font-family);
+  background-color: white;
+  font-family: sans-serif;
 }
 body._lock {
   overflow: hidden;
-}
-body.dark {
-  background-color: var(--dark-bg-page);
 }
 .wrapper {
   overflow: hidden;
@@ -80,4 +77,30 @@ body.dark {
   margin: 0 auto;
   max-width: 1440px;
   padding: 0 40px;
+}
+
+.header__body {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.header__title {
+  text-align: center;
+}
+.title {
+  font-size: 32px;
+}
+.header__block {
+  display: flex;
+  column-gap: 30px;
+  justify-content: center;
+}
+.btn {
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px black solid;
+  border-radius: 10px;
+  font-size: 18px;
 }

@@ -3,7 +3,7 @@ import { header } from './components/header.js';
 import { main } from './components/main.js';
 import { footer } from './components/footer.js';
 
-const startGame = { start: false };
+export const startGame = { start: false };
 const headerElement = header();
 const mainElement = main();
 const footerElement = footer();
