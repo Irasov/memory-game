@@ -39,7 +39,7 @@ export class Component {
     this.#node.addEventListener(event, listner);
   }
   removeListener(event, listener) {
-    this.#node.removeListener(event, listener);
+    this.#node.removeEventListener(event, listener);
   }
   destroyChildren() {
     this.#children.forEach((child) => {
