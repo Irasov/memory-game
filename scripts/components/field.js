@@ -10,11 +10,17 @@ export function field() {
 }
 
 function createCards() {
-  const cloneCards = cards.map((item) => ({ ...item }));
-  let count = 16;
-  while (count) {}
+  console.log(getRandId());
 }
 
 function getRandId(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  const ids = [];
+  for (let i = 1; i <= 8; i++) {
+    ids.push(i, i);
+  }
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  return ids;
 }
