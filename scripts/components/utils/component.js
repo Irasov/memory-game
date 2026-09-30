@@ -4,7 +4,7 @@ export class Component {
   constructor({ tag = 'div', classes = [], text = '' }, ...children) {
     const node = document.createElement(tag);
     node.textContent = text;
-    if (classes > 0) node.classList.add(...classes);
+    if (classes.length > 0) node.classList.add(...classes);
     this.#node = node;
     if (children) this.appendChildren(children);
   }
@@ -13,7 +13,7 @@ export class Component {
     this.#node.append(child.getNode());
   }
   appendChildren(children) {
-    children.array.forEach((child) => {
+    children.forEach((child) => {
       this.append(child);
     });
   }
@@ -33,7 +33,7 @@ export class Component {
     this.#node.removeAttribute(attribute);
   }
   toggleClass(className) {
-    this.#node.classList.togle(className);
+    this.#node.classList.toggle(className);
   }
   addListner(event, listner) {
     this.#node.addEventListener(event, listner);
