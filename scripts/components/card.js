@@ -1,6 +1,5 @@
 import { Component } from '../components/utils/component.js';
-import { countMove } from '../index.js';
-import { gameState } from '../index.js';
+import { countMove, gameState, resetCountMove } from '../index.js';
 import { updateFooter } from './footer.js';
 
 export function card(image, id) {
@@ -17,7 +16,9 @@ export function card(image, id) {
   );
   card.setAttribute('data-id', id);
   card.addListner('click', () => {
+    if (card.getNode().classList.contains('rotate')) return;
     card.addClass('rotate');
+    countMove.cards.push(card);
     if (!countMove.moves[0]) {
       countMove.moves[0] = true;
       countMove.id[0] = id;
@@ -28,12 +29,23 @@ export function card(image, id) {
     if (countMove.moves[0] && countMove.moves[1]) {
       gameState.moves++;
     }
-    if (countMove.id[0] === countMove.id[1] && countMove.id[0] !== -1) {
+    if (countMove.id[0] === countMove.id[1] && countMove.id[1] !== -1) {
       gameState.matchedPairs++;
       updateFooter(gameState.moves, gameState.matchedPairs);
-      countMove = { moves: [false, false], id: [-1, -1] };
+      resetCountMove();
+    } else if (
+      countMove.id[0] !== countMove.id[1] &&
+      countMove.id[0] !== -1 &&
+      countMove.id[1] !== -1
+    ) {
+      updateFooter(gameState.moves, gameState.matchedPairs);
+      countMove.cards.forEach((card) => {
+        setTimeout(() => {
+          card.removeClass('rotate');
+        }, 1000);
+      });
+      resetCountMove();
     }
-    console.log(gameState);
   });
   return card;
 }
