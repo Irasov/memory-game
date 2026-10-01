@@ -1,5 +1,5 @@
 import { Component } from '../components/utils/component.js';
-import { gameState } from '../index.js';
+import { gameState, newGame } from '../index.js';
 
 export function modal() {
   const title = new Component({
@@ -12,17 +12,25 @@ export function modal() {
     classes: ['modal__subtitle'],
     text: `Вы завершили игру за ${gameState.moves} ходов!`,
   });
-  const newGame = new Component({
+  const newGameBtn = new Component({
     tag: 'button',
     classes: ['modal__new-game', 'btn'],
     text: 'Новая игра',
+  });
+  newGameBtn.addListner('click', () => {
+    modal.destroy();
+    newGame();
   });
   const close = new Component({
     tag: 'button',
     classes: ['modal__close', 'btn'],
     text: 'Закрыть',
   });
-  const block = new Component({ tag: 'div', classes: ['modal__block'], text: '' }, newGame, close);
+  const block = new Component(
+    { tag: 'div', classes: ['modal__block'], text: '' },
+    newGameBtn,
+    close,
+  );
   const body = new Component(
     { tag: 'div', classes: ['modal__body'], text: '' },
     title,

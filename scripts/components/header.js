@@ -1,5 +1,5 @@
 import { Component } from '../components/utils/component.js';
-import { startGame } from '../index.js';
+import { newGame } from '../index.js';
 
 export function header() {
   const title = new Component({
@@ -12,7 +12,7 @@ export function header() {
     classes: ['header__start', 'btn'],
     text: 'Новая Игра',
   });
-  startButton.addListner('click', gameStart);
+  startButton.addListner('click', newGame);
   const resultButton = new Component({
     tag: 'button',
     classes: ['header__results', 'btn'],
@@ -27,9 +27,4 @@ export function header() {
   const container = new Component({ tag: 'div', classes: ['header__container'], text: '' }, body);
   const header = new Component({ tag: 'header', classes: ['header'], text: '' }, container);
   return header;
-}
-
-function gameStart() {
-  startGame.start = true;
-  console.log('Game start', startGame.start);
 }
