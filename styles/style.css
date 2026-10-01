@@ -133,6 +133,7 @@ body._lock {
 
 /************************************************/
 .field__body {
+  padding: 40px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
@@ -150,7 +151,7 @@ body._lock {
 }
 .card__body {
   position: relative;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease 0s;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -176,4 +177,23 @@ body._lock {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/**********************************************/
+.footer__body {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 30px;
+}
+.footer__move,
+.footer__pairs {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--border);
+}
+@media (max-width: 399.98px) {
+  .footer__move,
+  .footer__pairs {
+    font-size: 20px;
+  }
 }

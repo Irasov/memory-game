@@ -4,6 +4,7 @@ import { main } from './components/main.js';
 import { footer } from './components/footer.js';
 
 export const startGame = { start: false };
+export const gameState = { moves: 0, matchedPairs: 0 };
 const headerElement = header();
 const mainElement = main();
 const footerElement = footer();
