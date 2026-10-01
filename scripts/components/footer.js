@@ -1,6 +1,8 @@
 import { Component } from '../components/utils/component.js';
 import { gameState } from '../index.js';
 
+let footerElement = null;
+
 export function footer() {
   const move = new Component({
     tag: 'span',
@@ -14,6 +16,12 @@ export function footer() {
   });
   const body = new Component({ tag: 'div', classes: ['footer__body'], text: '' }, move, pairs);
   const container = new Component({ tag: 'div', classes: ['footer__container'], text: '' }, body);
-  const footer = new Component({ tag: 'footer', classes: ['footer'], text: '' }, container);
-  return footer;
+  footerElement = new Component({ tag: 'footer', classes: ['footer'], text: '' }, container);
+  console.log('footer', footerElement.findNode('footer__move'));
+  return footerElement;
+}
+
+export function updateFooter(move, pair) {
+  footerElement.findNode('footer__move').setTextContent(`Ходы: ${move}`);
+  footerElement.findNode('footer__pairs').setTextContent(`Пары: ${pair} из 8`);
 }

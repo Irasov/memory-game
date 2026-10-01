@@ -5,6 +5,7 @@ import { footer } from './components/footer.js';
 
 export const startGame = { start: false };
 export const gameState = { moves: 0, matchedPairs: 0 };
+export const countMove = { moves: [false, false], id: [-1, -1] };
 const headerElement = header();
 const mainElement = main();
 const footerElement = footer();

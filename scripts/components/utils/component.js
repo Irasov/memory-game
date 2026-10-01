@@ -35,6 +35,24 @@ export class Component {
   toggleClass(className) {
     this.#node.classList.toggle(className);
   }
+  addClass(className) {
+    this.#node.classList.add(className);
+  }
+  removeClass(className) {
+    this.#node.classList.remove(className);
+  }
+  findNode(className) {
+    if (this.#node.classList.contains(className)) {
+      return this;
+    }
+    for (const child of this.#children) {
+      const foundNode = child.findNode(className);
+      if (foundNode) {
+        return foundNode;
+      }
+    }
+    return null;
+  }
   addListner(event, listner) {
     this.#node.addEventListener(event, listner);
   }
