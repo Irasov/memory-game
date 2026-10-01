@@ -1,6 +1,7 @@
 import { Component } from '../components/utils/component.js';
 import { countMove, gameState, resetCountMove } from '../index.js';
 import { updateFooter } from './footer.js';
+import { modal } from './modal.js';
 
 export function card(image, id) {
   const cardImg = new Component({ tag: 'img', classes: ['card__img'], text: '' });
@@ -33,6 +34,10 @@ export function card(image, id) {
       gameState.matchedPairs++;
       updateFooter(gameState.moves, gameState.matchedPairs);
       resetCountMove();
+      if (gameState.matchedPairs === 8) {
+        const modalElement = modal();
+        document.body.appendChild(modalElement.getNode());
+      }
     } else if (
       countMove.id[0] !== countMove.id[1] &&
       countMove.id[0] !== -1 &&
