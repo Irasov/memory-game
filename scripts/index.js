@@ -3,7 +3,7 @@ import { header } from './components/header.js';
 import { main } from './components/main.js';
 import { footer } from './components/footer.js';
 
-export const resultGame = [];
+export let resultGame = [];
 export const gameState = { moves: 0, matchedPairs: 0 };
 export const countMove = { moves: [false, false], id: [-1, -1], cards: [] };
 const wrapperElement = new Component({ tag: 'div', classes: ['wrapper'], text: '' });
@@ -35,4 +35,13 @@ export function newGame() {
   gameState.matchedPairs = 0;
   wrapperElement.destroyChildren();
   start();
+}
+
+export function setResultGame(result) {
+  if (!localStorage.getItem('memo')) {
+    localStorage.setItem('memo', JSON.stringify(result));
+  } else if (resultGame.length < 10) {
+    resultGame.push(result);
+    localStorage.setItem('memo', JSON.stringify(resultGame));
+  }
 }
