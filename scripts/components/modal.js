@@ -29,6 +29,9 @@ export function modal() {
     subTitle,
     block,
   );
+  close.addListner('click', () => {
+    modal.destroy();
+  });
   const modal = new Component({ tag: 'div', classes: ['modal'], text: `` }, body);
   return modal;
 }
