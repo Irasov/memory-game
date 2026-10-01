@@ -13,5 +13,8 @@ export function card(image, id) {
     ),
   );
   card.setAttribute('data-id', id);
+  card.addListner('click', () => {
+    card.toggleClass('rotate');
+  });
   return card;
 }
