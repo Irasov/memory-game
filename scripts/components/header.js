@@ -1,5 +1,6 @@
 import { Component } from '../components/utils/component.js';
 import { newGame } from '../index.js';
+import { modalRes } from './modalRes.js';
 
 export function header() {
   const title = new Component({
@@ -17,6 +18,9 @@ export function header() {
     tag: 'button',
     classes: ['header__results', 'btn'],
     text: 'Таблица лидеров',
+  });
+  resultButton.addListner('click', () => {
+    document.body.appendChild(modalRes().getNode());
   });
   const block = new Component(
     { tag: 'div', classes: ['header__block'], text: '' },

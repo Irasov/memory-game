@@ -3,7 +3,7 @@ import { header } from './components/header.js';
 import { main } from './components/main.js';
 import { footer } from './components/footer.js';
 
-export const startGame = { start: false };
+export const resultGame = [];
 export const gameState = { moves: 0, matchedPairs: 0 };
 export const countMove = { moves: [false, false], id: [-1, -1], cards: [] };
 const wrapperElement = new Component({ tag: 'div', classes: ['wrapper'], text: '' });
@@ -15,6 +15,9 @@ export function resetCountMove() {
 }
 
 function start() {
+  if (localStorage.getItem('memo')) {
+    resultGame = JSON.parse(localStorage.getItem('memo'));
+  }
   const headerElement = header();
   const mainElement = main();
   const footerElement = footer();
