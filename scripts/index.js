@@ -6,6 +6,7 @@ import { footer } from './components/footer.js';
 export let resultGame = [];
 export const gameState = { moves: 0, matchedPairs: 0 };
 export const countMove = { moves: [false, false], id: [-1, -1], cards: [] };
+export const noClick = new Component({ tag: 'div', classes: ['no-click'], text: '' });
 const wrapperElement = new Component({ tag: 'div', classes: ['wrapper'], text: '' });
 
 export function resetCountMove() {
@@ -25,10 +26,6 @@ function start() {
   document.body.appendChild(wrapperElement.getNode());
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  start();
-});
-
 export function newGame() {
   resetCountMove();
   gameState.moves = 0;
@@ -45,3 +42,15 @@ export function setResultGame(result) {
     localStorage.setItem('memo', JSON.stringify(resultGame));
   }
 }
+
+export function noClickAdd() {
+  document.body.appendChild(noClick.getNode());
+}
+
+export function noClickRemove() {
+  noClick.destroy();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  start();
+});

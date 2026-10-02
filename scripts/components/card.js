@@ -1,5 +1,12 @@
 import { Component } from '../components/utils/component.js';
-import { countMove, gameState, resetCountMove, setResultGame } from '../index.js';
+import {
+  countMove,
+  gameState,
+  resetCountMove,
+  setResultGame,
+  noClickAdd,
+  noClickRemove,
+} from '../index.js';
 import { updateFooter } from './footer.js';
 import { modal } from './modal.js';
 
@@ -45,9 +52,11 @@ export function card(image, id) {
       countMove.id[1] !== -1
     ) {
       updateFooter(gameState.moves, gameState.matchedPairs);
+      noClickAdd();
       countMove.cards.forEach((card) => {
         setTimeout(() => {
           card.removeClass('rotate');
+          noClickRemove();
         }, 1000);
       });
       resetCountMove();
