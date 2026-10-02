@@ -44,7 +44,7 @@ export function card(image, id) {
       if (gameState.matchedPairs === 8) {
         const modalElement = modal();
         document.body.appendChild(modalElement.getNode());
-        setResultGame([{ date: new Date().toLocaleDateString('ru-RU'), moves: gameState.moves }]);
+        setResultGame({ date: new Date().toLocaleDateString('ru-RU'), moves: gameState.moves });
       }
     } else if (
       countMove.id[0] !== countMove.id[1] &&

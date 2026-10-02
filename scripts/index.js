@@ -36,9 +36,13 @@ export function newGame() {
 
 export function setResultGame(result) {
   if (!localStorage.getItem('memo')) {
-    localStorage.setItem('memo', JSON.stringify(result));
+    resultGame.push(result);
+    localStorage.setItem('memo', JSON.stringify(resultGame));
   } else if (resultGame.length < 10) {
     resultGame.push(result);
+    localStorage.setItem('memo', JSON.stringify(resultGame));
+  } else if (resultGame.length === 10) {
+    limitResultGame(result);
     localStorage.setItem('memo', JSON.stringify(resultGame));
   }
 }
@@ -49,6 +53,22 @@ export function noClickAdd() {
 
 export function noClickRemove() {
   noClick.destroy();
+}
+
+function limitResultGame(res) {
+  let value = res.moves;
+  let delIndex = null;
+  resultGame.forEach((item, index) => {
+    if (value < item.moves) {
+      delIndex = index;
+      value = item.moves;
+      console.log('value', value);
+    }
+  });
+  if (delIndex !== null) {
+    resultGame.splice(delIndex, 1);
+    resultGame.push(res);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
