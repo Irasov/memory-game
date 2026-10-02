@@ -46,6 +46,7 @@ export function modalRes() {
   if (!localStorage.getItem('memo')) {
     list.setTextContent('Пока нет результатов');
   } else {
+    resultGame.sort((a, b) => a.moves - b.moves);
     resultGame.forEach((item, index) => {
       const itemElement = createResultItem(item, index);
       list.append(itemElement);
