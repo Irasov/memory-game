@@ -17,7 +17,6 @@ export function footer() {
   const body = new Component({ tag: 'div', classes: ['footer__body'], text: '' }, move, pairs);
   const container = new Component({ tag: 'div', classes: ['footer__container'], text: '' }, body);
   footerElement = new Component({ tag: 'footer', classes: ['footer'], text: '' }, container);
-  console.log('footer', footerElement.findNode('footer__move'));
   return footerElement;
 }
 

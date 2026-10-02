@@ -14,7 +14,6 @@ export function field() {
 function createCards() {
   const id = getRandId();
   const cards = [];
-  console.log(cardsList);
   for (let i = 0; i < id.length; i += 1) {
     cards.push(card(cardsList[id[i]].image, cardsList[id[i]].id));
   }
@@ -30,6 +29,5 @@ function getRandId() {
     const j = Math.floor(Math.random() * (i + 1));
     [ids[i], ids[j]] = [ids[j], ids[i]];
   }
-  console.log(ids);
   return ids;
 }
