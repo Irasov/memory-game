@@ -256,6 +256,25 @@ body._lock {
 .result__title {
   text-align: center;
 }
+.result__list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.result__list-title {
+  padding: 0 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.result__item {
+  display: flex;
+  justify-content: space-between;
+}
+.result__moves {
+  color: var(--gold);
+  font-weight: 600;
+}
 
 /******************************/
 .no-click {
